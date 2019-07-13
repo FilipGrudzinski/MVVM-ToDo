@@ -24,12 +24,12 @@ final class ApplicationCoordinator: ApplicationCoordinatorProtocol {
 
     private weak var window: UIWindow?
 
-     private var mainCoordinator: MainCoordinatorProtocol?
+    private var mainCoordinator: MainCoordinatorProtocol?
 
     required init(window: UIWindow?) {
         self.window = window
     }
-
+    
     func start() {
         mainCoordinator = MainCoordinator(parentCoordinator: self)
         mainCoordinator?.start()

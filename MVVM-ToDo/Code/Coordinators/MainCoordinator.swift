@@ -20,5 +20,9 @@ final class MainCoordinator: MainCoordinatorProtocol {
     }
 
     func start() {
+        let viewModel = MainViewModel(coordinator: self)
+        let viewController = MainViewController(with: viewModel)
+        navigationController.pushViewController(viewController, animated: true)
+        parentCoordinator.showRootViewController(rootViewController: navigationController)
     }
 }

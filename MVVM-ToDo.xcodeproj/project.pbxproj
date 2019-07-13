@@ -12,6 +12,10 @@
 		149D85EE22D9EB1700780E80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 149D85EC22D9EB1700780E80 /* Main.storyboard */; };
 		149D85F022D9EB1800780E80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 149D85EF22D9EB1800780E80 /* Assets.xcassets */; };
 		149D85F322D9EB1800780E80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 149D85F122D9EB1800780E80 /* LaunchScreen.storyboard */; };
+		149D860122D9F8FC00780E80 /* UIViewExtensionsNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D860022D9F8FC00780E80 /* UIViewExtensionsNib.swift */; };
+		149D860322D9FA2400780E80 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D860222D9FA2400780E80 /* BundleExtension.swift */; };
+		149D860522D9FA8B00780E80 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D860422D9FA8B00780E80 /* ApplicationCoordinator.swift */; };
+		149D860722D9FD6400780E80 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D860622D9FD6400780E80 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		149D85EF22D9EB1800780E80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		149D85F222D9EB1800780E80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		149D85F422D9EB1800780E80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		149D860022D9F8FC00780E80 /* UIViewExtensionsNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensionsNib.swift; sourceTree = "<group>"; };
+		149D860222D9FA2400780E80 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
+		149D860422D9FA8B00780E80 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		149D860622D9FD6400780E80 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,66 @@
 		149D85E722D9EB1700780E80 /* MVVM-ToDo */ = {
 			isa = PBXGroup;
 			children = (
-				149D85E822D9EB1700780E80 /* AppDelegate.swift */,
+				149D85FA22D9EBF300780E80 /* Code */,
+				149D85FE22D9EC3D00780E80 /* Resources */,
 				149D85EA22D9EB1700780E80 /* ViewController.swift */,
 				149D85EC22D9EB1700780E80 /* Main.storyboard */,
-				149D85EF22D9EB1800780E80 /* Assets.xcassets */,
-				149D85F122D9EB1800780E80 /* LaunchScreen.storyboard */,
-				149D85F422D9EB1800780E80 /* Info.plist */,
 			);
 			path = "MVVM-ToDo";
+			sourceTree = "<group>";
+		};
+		149D85FA22D9EBF300780E80 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				149D85FC22D9EC0500780E80 /* Common */,
+				149D85FD22D9EC0D00780E80 /* Extensions */,
+				149D85FB22D9EBFC00780E80 /* Coordinators */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		149D85FB22D9EBFC00780E80 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				149D860422D9FA8B00780E80 /* ApplicationCoordinator.swift */,
+				149D860622D9FD6400780E80 /* MainCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		149D85FC22D9EC0500780E80 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				149D85E822D9EB1700780E80 /* AppDelegate.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		149D85FD22D9EC0D00780E80 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				149D860022D9F8FC00780E80 /* UIViewExtensionsNib.swift */,
+				149D860222D9FA2400780E80 /* BundleExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		149D85FE22D9EC3D00780E80 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				149D85FF22D9EC5C00780E80 /* Storyboards */,
+				149D85EF22D9EB1800780E80 /* Assets.xcassets */,
+				149D85F422D9EB1800780E80 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		149D85FF22D9EC5C00780E80 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				149D85F122D9EB1800780E80 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +195,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				149D860522D9FA8B00780E80 /* ApplicationCoordinator.swift in Sources */,
+				149D860722D9FD6400780E80 /* MainCoordinator.swift in Sources */,
 				149D85EB22D9EB1700780E80 /* ViewController.swift in Sources */,
+				149D860122D9F8FC00780E80 /* UIViewExtensionsNib.swift in Sources */,
 				149D85E922D9EB1700780E80 /* AppDelegate.swift in Sources */,
+				149D860322D9FA2400780E80 /* BundleExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +347,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "MVVM-ToDo/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MVVM-ToDo/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,7 +364,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "MVVM-ToDo/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MVVM-ToDo/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

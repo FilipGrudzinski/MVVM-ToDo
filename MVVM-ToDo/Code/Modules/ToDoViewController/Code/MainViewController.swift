@@ -9,7 +9,7 @@
 import UIKit
 
 final class MainViewController: BaseViewController {
-    @IBOutlet weak var toDoTableView: UITableView!
+    @IBOutlet private weak var toDoTableView: UITableView!
     
     private var viewModel: MainViewModelProtcol
 
@@ -25,9 +25,47 @@ final class MainViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setup()
+        viewModel.getData()
+    }
+
+    private func setup() {
+        title = viewModel.texts.title
+        setupTableView()
+    }
+
+    private func setupTableView() {
+        toDoTableView.registerCellByNib(MainTableViewCell.self)
+        toDoTableView.dataSource = self
+        toDoTableView.delegate = self
+        toDoTableView.separatorInset = .zero
+        toDoTableView.tableFooterView = UIView()
     }
 }
 
 extension MainViewController: MainViewModelDelegate {
+    func reloadData() {
+        toDoTableView.reloadData()
+    }
+}
 
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    }
+}
+
+extension MainViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.dataSourceCount
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: MainTableViewCell = tableView.dequeueReusableCell(indexPath: indexPath)
+        cell.setupData(with: viewModel.task(at: indexPath))
+        cell.isDoneButtonTapped =  { [weak self] in self?.viewModel.isDoneTask(at: indexPath) }
+
+        return cell
+    }
 }

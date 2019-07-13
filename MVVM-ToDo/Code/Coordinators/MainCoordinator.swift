@@ -9,6 +9,7 @@
 import UIKit
 
 protocol MainCoordinatorProtocol: CoordinatorProtocol {
+    func showEditingView()
 }
 
 final class MainCoordinator: MainCoordinatorProtocol {
@@ -24,5 +25,9 @@ final class MainCoordinator: MainCoordinatorProtocol {
         let viewController = MainViewController(with: viewModel)
         navigationController.pushViewController(viewController, animated: true)
         parentCoordinator.showRootViewController(rootViewController: navigationController)
+    }
+
+    func showEditingView() {
+        
     }
 }

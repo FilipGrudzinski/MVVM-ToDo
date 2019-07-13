@@ -33,6 +33,7 @@ final class MainViewController: BaseViewController {
     private func setup() {
         title = viewModel.texts.title
         setupTableView()
+        addAddButton()
     }
 
     private func setupTableView() {
@@ -41,6 +42,14 @@ final class MainViewController: BaseViewController {
         toDoTableView.delegate = self
         toDoTableView.separatorInset = .zero
         toDoTableView.tableFooterView = UIView()
+    }
+
+    private func addAddButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAction(_:)))
+    }
+
+    @IBAction func addAction(_ sender: UIButton) {
+        viewModel.showEditingView()
     }
 }
 

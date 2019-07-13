@@ -17,6 +17,9 @@ protocol MainViewModelDelegate: class {
 }
 
 final class MainViewModel {
+    struct Text {
+        
+    }
     weak var delegate: MainViewModelDelegate!
 
     private let coordinator: MainCoordinator

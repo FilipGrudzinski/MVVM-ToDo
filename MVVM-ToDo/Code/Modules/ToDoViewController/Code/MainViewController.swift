@@ -9,7 +9,8 @@
 import UIKit
 
 final class MainViewController: BaseViewController {
-
+    @IBOutlet weak var toDoTableView: UITableView!
+    
     private var viewModel: MainViewModelProtcol
 
     init(with vieModel: MainViewModelProtcol) {

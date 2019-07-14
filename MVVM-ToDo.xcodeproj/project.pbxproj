@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1402F84C22DBB42700D12FB8 /* ToDoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1402F84B22DBB42700D12FB8 /* ToDoNavigationController.swift */; };
 		1483818422DA9D4900912167 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483818322DA9D4900912167 /* TaskViewController.swift */; };
 		1483818622DA9D5900912167 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483818522DA9D5900912167 /* TaskViewModel.swift */; };
 		1483818822DA9D8800912167 /* TaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1483818722DA9D8800912167 /* TaskViewController.xib */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1402F84B22DBB42700D12FB8 /* ToDoNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoNavigationController.swift; sourceTree = "<group>"; };
 		1483818322DA9D4900912167 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		1483818522DA9D5900912167 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		1483818722DA9D8800912167 /* TaskViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskViewController.xib; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				149D85FB22D9EBFC00780E80 /* Coordinators */,
 				149D85FD22D9EC0D00780E80 /* Extensions */,
 				149D860822D9FEE900780E80 /* Modules */,
+				1402F84B22DBB42700D12FB8 /* ToDoNavigationController.swift */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				149D860F22D9FFAC00780E80 /* MainViewModel.swift in Sources */,
 				149D860522D9FA8B00780E80 /* ApplicationCoordinator.swift in Sources */,
 				149D861C22DA91D000780E80 /* ToDoModel.swift in Sources */,
+				1402F84C22DBB42700D12FB8 /* ToDoNavigationController.swift in Sources */,
 				149D860722D9FD6400780E80 /* MainCoordinator.swift in Sources */,
 				149D85EB22D9EB1700780E80 /* BaseViewController.swift in Sources */,
 				149D860122D9F8FC00780E80 /* UIViewExtensionsNib.swift in Sources */,

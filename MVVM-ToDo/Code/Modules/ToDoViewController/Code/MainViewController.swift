@@ -13,8 +13,8 @@ final class MainViewController: BaseViewController {
     
     private var viewModel: MainViewModelProtcol
 
-    init(with vieModel: MainViewModelProtcol) {
-        self.viewModel = vieModel
+    init(with viewModel: MainViewModelProtcol) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.viewModel.delegate = self
     }
@@ -49,7 +49,7 @@ final class MainViewController: BaseViewController {
     }
 
     @IBAction func addAction(_ sender: UIButton) {
-        viewModel.showEditingView()
+        viewModel.showTaskView()
     }
 }
 

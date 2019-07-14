@@ -7,3 +7,25 @@
 //
 
 import Foundation
+
+protocol TaskViewModelProtocol: class {
+    var delegate: TaskViewModelDelegate! { get set }
+}
+
+protocol TaskViewModelDelegate: class {
+}
+
+final class TaskViewModel {
+
+    weak var delegate: TaskViewModelDelegate!
+    
+    private let coordinator: MainCoordinator
+
+    init(coordinator: MainCoordinator) {
+        self.coordinator = coordinator
+    }
+}
+
+extension TaskViewModel: TaskViewModelProtocol {
+    
+}

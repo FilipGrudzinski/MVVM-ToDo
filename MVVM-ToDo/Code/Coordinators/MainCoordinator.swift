@@ -9,12 +9,12 @@
 import UIKit
 
 protocol MainCoordinatorProtocol: CoordinatorProtocol {
-    func showEditingView()
+    func showTaskView()
 }
 
 final class MainCoordinator: MainCoordinatorProtocol {
     private let parentCoordinator: ApplicationParentCoordinatorProtocol
-    private let navigationController = UINavigationController()
+    private let navigationController = ToDoNavigationController()
 
     init(parentCoordinator: ApplicationParentCoordinatorProtocol) {
         self.parentCoordinator = parentCoordinator
@@ -27,7 +27,10 @@ final class MainCoordinator: MainCoordinatorProtocol {
         parentCoordinator.showRootViewController(rootViewController: navigationController)
     }
 
-    func showEditingView() {
-        
+    func showTaskView() {
+        let viewModel = TaskViewModel(coordinator: self)
+        let viewController = TaskViewController(with: viewModel)
+        navigationController.pushViewController(viewController, animated: true)
+
     }
 }

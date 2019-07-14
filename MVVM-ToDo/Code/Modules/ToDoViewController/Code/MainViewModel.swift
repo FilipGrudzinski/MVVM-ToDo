@@ -16,7 +16,7 @@ protocol MainViewModelProtcol: class {
     func getData()
     func task(at indexPath: IndexPath) -> ToDoModel
     func isDoneTask(at indexPath: IndexPath)
-    func showEditingView()
+    func showTaskView()
 }
 
 protocol MainViewModelDelegate: class {
@@ -48,8 +48,8 @@ extension MainViewModel: MainViewModelProtcol {
         return data[indexPath.row]
     }
 
-    func showEditingView() {
-        coordinator.showEditingView()
+    func showTaskView() {
+        coordinator.showTaskView()
     }
 
     var dataSourceCount: Int {

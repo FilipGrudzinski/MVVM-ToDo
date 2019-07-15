@@ -27,7 +27,6 @@
 		149D861522DA8C5C00780E80 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D861422DA8C5C00780E80 /* UITableViewExtension.swift */; };
 		149D861722DA8E0F00780E80 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D861622DA8E0F00780E80 /* MainTableViewCell.swift */; };
 		149D861922DA8E1E00780E80 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149D861822DA8E1E00780E80 /* MainTableViewCell.xib */; };
-		149D861C22DA91D000780E80 /* ToDoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D861B22DA91D000780E80 /* ToDoModel.swift */; };
 		98EC8BA81636A88D9D71A9B3 /* Pods_MVVM_ToDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D024A2E20EBE4875BC24DA2E /* Pods_MVVM_ToDo.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +53,6 @@
 		149D861422DA8C5C00780E80 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		149D861622DA8E0F00780E80 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		149D861822DA8E1E00780E80 /* MainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
-		149D861B22DA91D000780E80 /* ToDoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoModel.swift; sourceTree = "<group>"; };
 		8984248399C91472DF53FE6F /* Pods-MVVM-ToDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-ToDo.debug.xcconfig"; path = "Target Support Files/Pods-MVVM-ToDo/Pods-MVVM-ToDo.debug.xcconfig"; sourceTree = "<group>"; };
 		B0304987043D8B5493638F84 /* Pods-MVVM-ToDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-ToDo.release.xcconfig"; path = "Target Support Files/Pods-MVVM-ToDo/Pods-MVVM-ToDo.release.xcconfig"; sourceTree = "<group>"; };
 		D024A2E20EBE4875BC24DA2E /* Pods_MVVM_ToDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_ToDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				149D860A22D9FF5100780E80 /* Code */,
-				149D861A22DA91BB00780E80 /* Worker */,
 				149D860B22D9FF5600780E80 /* Views */,
 			);
 			path = ToDoViewController;
@@ -229,14 +226,6 @@
 				149D861822DA8E1E00780E80 /* MainTableViewCell.xib */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		149D861A22DA91BB00780E80 /* Worker */ = {
-			isa = PBXGroup;
-			children = (
-				149D861B22DA91D000780E80 /* ToDoModel.swift */,
-			);
-			path = Worker;
 			sourceTree = "<group>";
 		};
 		77FF9BEFB3B5A3A2C894DA7B /* Frameworks */ = {
@@ -379,7 +368,6 @@
 				149D861522DA8C5C00780E80 /* UITableViewExtension.swift in Sources */,
 				149D860F22D9FFAC00780E80 /* MainViewModel.swift in Sources */,
 				149D860522D9FA8B00780E80 /* ApplicationCoordinator.swift in Sources */,
-				149D861C22DA91D000780E80 /* ToDoModel.swift in Sources */,
 				1402F84C22DBB42700D12FB8 /* ToDoNavigationController.swift in Sources */,
 				149D860722D9FD6400780E80 /* MainCoordinator.swift in Sources */,
 				149D85EB22D9EB1700780E80 /* BaseViewController.swift in Sources */,

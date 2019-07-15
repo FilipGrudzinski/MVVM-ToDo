@@ -30,6 +30,11 @@ final class MainViewController: BaseViewController {
         viewModel.getData()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        toDoTableView.reloadData()
+    }
+
     private func setup() {
         title = viewModel.texts.title
         setupTableView()

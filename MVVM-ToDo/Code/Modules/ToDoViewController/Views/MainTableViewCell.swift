@@ -37,7 +37,7 @@ final class MainTableViewCell: UITableViewCell {
 
     func setupData(with model: TaskModel) {
         titleLabel.text = model.title
-        descriptionLabel.text = model.descr
+        descriptionLabel.text = model.taskDescription
         isDoneButton.tintColor = model.isDone ? .red : .lightGray
     }
 }

@@ -11,6 +11,6 @@ import RealmSwift
 
 final class TaskModel: Object {
     @objc dynamic var title: String = ""
-    @objc dynamic var descr: String = ""
+    @objc dynamic var taskDescription: String = ""
     @objc dynamic var isDone: Bool = false
 }

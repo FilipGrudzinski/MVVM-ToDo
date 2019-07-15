@@ -32,7 +32,6 @@ final class MainViewModel {
     }
 
     weak var delegate: MainViewModelDelegate!
-    private var data: [ToDoModel] = []
 
     let realm = try! Realm()
     var toDoTasks: Results<TaskModel>?
@@ -44,8 +43,28 @@ final class MainViewModel {
 }
 
 extension MainViewModel: MainViewModelProtcol {
+    var texts: MainViewModel.Texts {
+        return Texts()
+    }
+
+    var dataSourceCount: Int {
+        return toDoTasks!.count
+    }
+
+    func getData() {
+        toDoTasks = realm.objects(TaskModel.self)
+    }
+
+    func task(at indexPath: IndexPath) -> TaskModel {
+        return (toDoTasks?[indexPath.row])!
+    }
+
     func selectedTask(at row: Int) {
         coordinator.showTaskView(taskRow: row)
+    }
+
+    func showTaskView() {
+        coordinator.showTaskView()
     }
 
     func delete(at row: Int) {
@@ -57,49 +76,18 @@ extension MainViewModel: MainViewModelProtcol {
         } catch {
             print(error)
         }
-        //data.remove(at: row)
         delegate.reloadData()
     }
 
     func isDoneTask(at row: Int) {
         guard let task = toDoTasks?[row] else { return }
-            do {
-                try realm.write {
-                    task.isDone = !task.isDone
-                }
-            } catch {
-                print(error)
+        do {
+            try realm.write {
+                task.isDone = !task.isDone
             }
-            delegate.reloadData()
-    }
-
-    func task(at indexPath: IndexPath) -> TaskModel {
-        return (toDoTasks?[indexPath.row])!
-    }
-
-    func showTaskView() {
-        coordinator.showTaskView()
-    }
-
-    var dataSourceCount: Int {
-        return toDoTasks!.count
-    }
-
-    func getData() {
-        let model = TaskModel()
-        model.title = "Dome"
-        model.descr = "dadsadsadasdasd"
-
-        try! realm.write {
-            realm.add(model)
+        } catch {
+            print(error)
         }
-
-        toDoTasks = realm.objects(TaskModel.self)
-
-        //data = [ToDoModel(title: "Dom", description: "dsadasdadsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdass", isDone: true),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: true)]
-    }
-
-    var texts: MainViewModel.Texts {
-        return Texts()
+        delegate.reloadData()
     }
 }

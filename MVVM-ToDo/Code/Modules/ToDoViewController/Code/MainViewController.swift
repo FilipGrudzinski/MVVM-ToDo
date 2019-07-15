@@ -72,7 +72,7 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MainTableViewCell = tableView.dequeueReusableCell(indexPath: indexPath)
         cell.setupData(with: viewModel.task(at: indexPath))
-        cell.isDoneButtonTapped =  { [weak self] in self?.viewModel.isDoneTask(at: indexPath) }
+        cell.isDoneButtonTapped =  { [weak self] in self?.viewModel.isDoneTask(at: indexPath.row) }
 
         return cell
     }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol MainViewModelProtcol: class {
     var delegate: MainViewModelDelegate! { get set }
@@ -15,8 +16,8 @@ protocol MainViewModelProtcol: class {
 
     func getData()
     func selectedTask(at row: Int)
-    func isDoneTask(at indexPath: IndexPath)
-    func task(at indexPath: IndexPath) -> ToDoModel
+    func isDoneTask(at row: Int)
+    func task(at indexPath: IndexPath) -> TaskModel
     func delete(at row: Int)
     func showTaskView()
 }
@@ -29,8 +30,12 @@ final class MainViewModel {
     struct Texts {
         let title = "To Do App"
     }
+
     weak var delegate: MainViewModelDelegate!
     private var data: [ToDoModel] = []
+
+    let realm = try! Realm()
+    var toDoTasks: Results<TaskModel>?
 
     private let coordinator: MainCoordinator
     init(coordinator: MainCoordinator) {
@@ -44,19 +49,32 @@ extension MainViewModel: MainViewModelProtcol {
     }
 
     func delete(at row: Int) {
-        data.remove(at: row)
+        guard let task = toDoTasks?[row] else { return }
+        do {
+            try self.realm.write {
+                self.realm.delete(task)
+            }
+        } catch {
+            print(error)
+        }
+        //data.remove(at: row)
         delegate.reloadData()
     }
 
-    func isDoneTask(at indexPath: IndexPath) {
-        var model = task(at: indexPath)
-        model.isDone.toggle()
-        data[indexPath.row] = model
-        delegate.reloadData()
+    func isDoneTask(at row: Int) {
+        guard let task = toDoTasks?[row] else { return }
+            do {
+                try realm.write {
+                    task.isDone = !task.isDone
+                }
+            } catch {
+                print(error)
+            }
+            delegate.reloadData()
     }
 
-    func task(at indexPath: IndexPath) -> ToDoModel {
-        return data[indexPath.row]
+    func task(at indexPath: IndexPath) -> TaskModel {
+        return (toDoTasks?[indexPath.row])!
     }
 
     func showTaskView() {
@@ -64,11 +82,21 @@ extension MainViewModel: MainViewModelProtcol {
     }
 
     var dataSourceCount: Int {
-        return data.count
+        return toDoTasks!.count
     }
 
     func getData() {
-        data = [ToDoModel(title: "Dom", description: "dsadasdadsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdass", isDone: true),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: true)]
+        let model = TaskModel()
+        model.title = "Dome"
+        model.descr = "dadsadsadasdasd"
+
+        try! realm.write {
+            realm.add(model)
+        }
+
+        toDoTasks = realm.objects(TaskModel.self)
+
+        //data = [ToDoModel(title: "Dom", description: "dsadasdadsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdass", isDone: true),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: true)]
     }
 
     var texts: MainViewModel.Texts {

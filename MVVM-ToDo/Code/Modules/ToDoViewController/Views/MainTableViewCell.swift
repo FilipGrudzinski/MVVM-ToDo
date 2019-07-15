@@ -35,9 +35,9 @@ final class MainTableViewCell: UITableViewCell {
         descriptionLabel.font = .systemFont(ofSize: Constant.descriptionSize, weight: .regular)
     }
 
-    func setupData(with model: ToDoModel) {
+    func setupData(with model: TaskModel) {
         titleLabel.text = model.title
-        descriptionLabel.text = model.description
+        descriptionLabel.text = model.descr
         isDoneButton.tintColor = model.isDone ? .red : .lightGray
     }
 }

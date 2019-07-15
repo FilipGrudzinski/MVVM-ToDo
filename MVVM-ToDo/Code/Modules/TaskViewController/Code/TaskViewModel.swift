@@ -7,13 +7,13 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol TaskViewModelProtocol: class {
     var delegate: TaskViewModelDelegate! { get set }
 
     func getData()
     func saveRow(at row: Int, isAble: Bool)
-    func taskToShow(at row: Int) -> ToDoModel
     func close()
 }
 
@@ -27,7 +27,11 @@ final class TaskViewModel {
     weak var delegate: TaskViewModelDelegate!
     
     private let coordinator: MainCoordinator
-    private var datas: [ToDoModel] = []
+    //private var datas: [ToDoModel] = []
+    let realm = try! Realm()
+    var toDoTasks: Results<TaskModel>?
+
+
     private var selectedRow: Int?
     private var isEnable: Bool?
 
@@ -50,14 +54,16 @@ extension TaskViewModel: TaskViewModelProtocol {
 //        selectedRow = row
 //    }
 
-    func taskToShow(at row: Int) -> ToDoModel {
-        return datas[row]
-    }
 
     func getData() {
-        datas = [ToDoModel(title: "Dom", description: "dsadasdadsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdass", isDone: true),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: true)]
+        //        try! realm.write {
+//        }
+        //toDoTasks = realm.objects(TaskModel.self)
+        //datas = [ToDoModel(title: "Dom", description: "dsadasdadsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdass", isDone: true),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: true)]
         guard let tempRow = selectedRow else { return }
+
+        toDoTasks = realm.objects(TaskModel.self)
         delegate.isExisting(enable: isEnable!)
-        delegate.presentDescription(title: taskToShow(at: tempRow).title, description: taskToShow(at: tempRow).description)
-    }
+        delegate.presentDescription(title: toDoTasks?[tempRow].title, description: toDoTasks?[tempRow].descr)
+            }
 }

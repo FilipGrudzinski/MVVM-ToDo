@@ -38,7 +38,8 @@ final class MainCoordinator: MainCoordinatorProtocol {
 
     func showTaskView(taskRow: Int) {
         let viewModel = TaskViewModel(coordinator: self)
-        viewModel.saveRow(at: taskRow)
+        viewModel.saveRow(at: taskRow, isAble: true)
+        //viewModel.saveRow(at: taskRow)
         let viewController = TaskViewController(with: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }

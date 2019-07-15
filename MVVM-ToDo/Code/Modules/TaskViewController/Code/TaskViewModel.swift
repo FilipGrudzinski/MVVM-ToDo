@@ -12,13 +12,14 @@ protocol TaskViewModelProtocol: class {
     var delegate: TaskViewModelDelegate! { get set }
 
     func getData()
-    func saveRow(at row: Int)
+    func saveRow(at row: Int, isAble: Bool)
     func taskToShow(at row: Int) -> ToDoModel
+    func close()
 }
 
 protocol TaskViewModelDelegate: class {
-    func presentDescription(text: String?, description: String?)
-    func shouldAddEditButton(_ hide: Bool)
+    func presentDescription(title: String?, description: String?)
+    func isExisting(enable: Bool)
 }
 
 final class TaskViewModel {
@@ -28,6 +29,7 @@ final class TaskViewModel {
     private let coordinator: MainCoordinator
     private var datas: [ToDoModel] = []
     private var selectedRow: Int?
+    private var isEnable: Bool?
 
     init(coordinator: MainCoordinator) {
         self.coordinator = coordinator
@@ -35,9 +37,18 @@ final class TaskViewModel {
 }
 
 extension TaskViewModel: TaskViewModelProtocol {
-    func saveRow(at row: Int) {
+    func saveRow(at row: Int, isAble: Bool) {
         selectedRow = row
+        isEnable = isAble
     }
+
+    func close() {
+        coordinator.close()
+    }
+
+//    func saveRow(at row: Int) {
+//        selectedRow = row
+//    }
 
     func taskToShow(at row: Int) -> ToDoModel {
         return datas[row]
@@ -45,8 +56,8 @@ extension TaskViewModel: TaskViewModelProtocol {
 
     func getData() {
         datas = [ToDoModel(title: "Dom", description: "dsadasdadsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdasdsadasdass", isDone: true),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: false),ToDoModel(title: "Dom", description: "dsadasdas", isDone: true)]
-        //delegate.shouldAddEditButton(true)
         guard let tempRow = selectedRow else { return }
-        delegate.presentDescription(text: taskToShow(at: tempRow).title, description: taskToShow(at: tempRow).description)
+        delegate.isExisting(enable: isEnable!)
+        delegate.presentDescription(title: taskToShow(at: tempRow).title, description: taskToShow(at: tempRow).description)
     }
 }

@@ -31,33 +31,43 @@ final class TaskViewController: BaseViewController {
         viewModel.getData()
     }
 
-    @IBAction func editAction(_ sender: UIButton) {
-
-    }
-
 
 
     private func addEditButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editAction(_:)))
+        descriptionTextView.isEditable = false
+    }
+
+    private func addSaveButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveEditionButtonAction(_:)))
+        descriptionTextView.isEditable = true
     }
 
     private func setupView() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveEditionButtonAction(_:)))
+        addSaveButton()
+        descriptionTextView.text = ""
     }
 
     @IBAction func saveEditionButtonAction(_ sender: Any) {
+        addEditButton()
         //viewModel.close()
+    }
+
+    @IBAction func editAction(_ sender: UIButton) {
+        addSaveButton()
     }
 }
 
 extension TaskViewController: TaskViewModelDelegate {
-    func shouldAddEditButton(_ hide: Bool) {
-        addEditButton()
+    func isExisting(enable: Bool) {
+        enable == true ? addEditButton() : addSaveButton()
     }
 
-    func presentDescription(text: String?, description: String?) {
-        self.title = text
+
+    func presentDescription(title: String?, description: String?) {
+        self.title = title
         descriptionTextView.text = description
+        titleTextField.placeholder = title
     }
 
     func touchesBegan(touches: NSSet, withEvent event: UIEvent) {

@@ -41,7 +41,6 @@ final class MainViewController: BaseViewController {
         toDoTableView.dataSource = self
         toDoTableView.delegate = self
         toDoTableView.separatorInset = .zero
-        toDoTableView.tableFooterView = UIView()
     }
 
     private func addAddButton() {
@@ -61,7 +60,7 @@ extension MainViewController: MainViewModelDelegate {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        viewModel.selectedTask(at: indexPath.row)
     }
 }
 
@@ -76,5 +75,9 @@ extension MainViewController: UITableViewDataSource {
         cell.isDoneButtonTapped =  { [weak self] in self?.viewModel.isDoneTask(at: indexPath) }
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        viewModel.delete(at: indexPath.row)
     }
 }

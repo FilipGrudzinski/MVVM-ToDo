@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskViewController" customModule="MVVM_ToDo" customModuleProvider="target">
             <connections>
+                <outlet property="descriptionTextView" destination="QCb-Oz-qMc" id="iCe-4U-MCg"/>
+                <outlet property="titleTextField" destination="CPO-CO-8ss" id="E5n-0x-6bR"/>
                 <outlet property="view" destination="iN0-l3-epB" id="w1c-HV-1jE"/>
             </connections>
         </placeholder>
@@ -19,7 +21,31 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCb-Oz-qMc">
+                    <rect key="frame" x="15" y="114" width="384" height="728"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CPO-CO-8ss">
+                    <rect key="frame" x="20" y="64" width="374" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="QCb-Oz-qMc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="9K9-AO-n20"/>
+                <constraint firstItem="QCb-Oz-qMc" firstAttribute="top" secondItem="CPO-CO-8ss" secondAttribute="bottom" constant="20" id="BSb-0R-Iee"/>
+                <constraint firstItem="CPO-CO-8ss" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="CNS-n2-Sfq"/>
+                <constraint firstItem="CPO-CO-8ss" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="Ie5-B3-5By"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="QCb-Oz-qMc" secondAttribute="trailing" constant="15" id="Inc-0e-i8e"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="CPO-CO-8ss" secondAttribute="trailing" constant="20" id="JZ9-BX-OSd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="QCb-Oz-qMc" secondAttribute="bottom" constant="20" id="iyt-D8-zvC"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
     </objects>

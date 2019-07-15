@@ -14,8 +14,10 @@ protocol MainViewModelProtcol: class {
     var dataSourceCount: Int { get }
 
     func getData()
-    func task(at indexPath: IndexPath) -> ToDoModel
+    func selectedTask(at row: Int)
     func isDoneTask(at indexPath: IndexPath)
+    func task(at indexPath: IndexPath) -> ToDoModel
+    func delete(at row: Int)
     func showTaskView()
 }
 
@@ -37,6 +39,15 @@ final class MainViewModel {
 }
 
 extension MainViewModel: MainViewModelProtcol {
+    func selectedTask(at row: Int) {
+        coordinator.showTaskView(taskRow: row)
+    }
+
+    func delete(at row: Int) {
+        data.remove(at: row)
+        delegate.reloadData()
+    }
+
     func isDoneTask(at indexPath: IndexPath) {
         var model = task(at: indexPath)
         model.isDone.toggle()

@@ -10,9 +10,12 @@ import UIKit
 
 protocol MainCoordinatorProtocol: CoordinatorProtocol {
     func showTaskView()
+    func showTaskView(taskRow: Int)
+    func close()
 }
 
 final class MainCoordinator: MainCoordinatorProtocol {
+
     private let parentCoordinator: ApplicationParentCoordinatorProtocol
     private let navigationController = ToDoNavigationController()
 
@@ -31,6 +34,20 @@ final class MainCoordinator: MainCoordinatorProtocol {
         let viewModel = TaskViewModel(coordinator: self)
         let viewController = TaskViewController(with: viewModel)
         navigationController.pushViewController(viewController, animated: true)
+    }
 
+    func showTaskView(taskRow: Int) {
+        let viewModel = TaskViewModel(coordinator: self)
+        viewModel.saveRow(at: taskRow)
+        let viewController = TaskViewController(with: viewModel)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
+    func close() {
+        guard let vc = navigationController.viewControllers.first(where: { $0 is MainViewController }) else {
+            navigationController.popToRootViewController(animated: true)
+            return
+        }
+        navigationController.popToViewController(vc, animated: true)
     }
 }

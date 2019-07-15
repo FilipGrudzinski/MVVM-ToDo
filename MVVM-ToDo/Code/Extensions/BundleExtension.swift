@@ -13,3 +13,4 @@ extension Bundle {
         main.loadNibNamed(String(describing: type(of: owner)), owner: owner, options: nil)
     }
 }
+

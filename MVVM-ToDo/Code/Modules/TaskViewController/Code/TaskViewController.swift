@@ -62,7 +62,7 @@ final class TaskViewController: BaseViewController {
 
 extension TaskViewController: TaskViewModelDelegate {
     func isExisting(enable: Bool) {
-        enable == true ? addEditButton() : addSaveButton()
+        enable ? addEditButton() : addSaveButton()
     }
     
     func presentDescription(title: String?, description: String?) {
